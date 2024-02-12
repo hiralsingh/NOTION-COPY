@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiral Aesthetic Study</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        header {
+            background-color: #E6B0F7; /* Pastel Purple */
+            color: #333;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #E6B0F7; /* Pastel Purple */
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #333;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+        nav a:hover {
+            background-color: #D2B4DE; /* Lighter Purple */
+        }
+        section {
+            padding: 20px;
+        }
+        footer {
+            background-color: #E6B0F7; /* Pastel Purple */
+            color: #333;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .todo-list {
+            margin-bottom: 20px;
+        }
+        .button {
+            background-color: #D2B4DE; /* Lighter Purple */
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        .button:hover {
+            background-color: #BB8FCE; /* Light Purple */
+        }
+        .input-text {
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #D2B4DE; /* Lighter Purple */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Hiral Aesthetic Study</h1>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Gallery</a>
+    <a href="#">Contact</a>
+</nav>
+
+<section>
+    <h2>Welcome to Hiral Aesthetic Study</h2>
+    <p>This website is dedicated to the study and appreciation of aesthetics. Explore various aspects of beauty, art, design, and culture.</p>
+
+    <h3>Arctic Monkeys References</h3>
+    <p>As we dive into the realm of aesthetics, let's not forget the influential band Arctic Monkeys. Their music has inspired countless individuals and resonates with the essence of modern culture.</p>
+    <ul>
+        <li>Listen to <a href="https://open.spotify.com/track/2tO7s7spU5lrofwL0XejTS?si=ff311fa5c25d4f05" target="_blank">"505"</a> on Spotify and feel the raw energy.</li>
+        <li>Explore the poetic lyrics of "505" and let your mind wander.</li>
+        <li>Get lost in the nostalgia of "Fluorescent Adolescent" and reminisce about youthful days.</li>
+    </ul>
+</section>
+
+<section>
+    <h3>Pomodoro Timer</h3>
+    <p>Start a Pomodoro timer to enhance your productivity:</p>
+    <!-- Placeholder for Pomodoro Timer -->
+    <div id="pomodoro-timer">
+        <button class="button" onclick="startTimer()">Start Pomodoro</button>
+        <p id="timer"></p>
+    </div>
+</section>
+
+<section>
+    <h3>To-Do List</h3>
+    <p>Stay organized with our To-Do list:</p>
+    <!-- Placeholder for To-Do List -->
+    <div class="todo-list">
+        <input type="text" id="todo-item" class="input-text" placeholder="Enter your task">
+        <button class="button" onclick="addItem()">Add Task</button>
+    </div>
+    <ul id="tasks">
+        <!-- Tasks will be dynamically added here -->
+    </ul>
+</section>
+
+<footer>
+    <!-- No All rights reserved line -->
+</footer>
+
+<script>
+    // Pomodoro Timer
+    var timer;
+    var minutes = 25;
+    var seconds = 0;
+
+    function startTimer() {
+        clearInterval(timer);
+        timer = setInterval(updateTimer, 1000);
+        updateTimer();
+    }
+
+    function updateTimer() {
+        var timerDisplay = document.getElementById("timer");
+        if (minutes >= 0 && seconds >= 0) {
+            timerDisplay.textContent = padNumber(minutes) + ":" + padNumber(seconds);
+            if (seconds === 0) {
+                if (minutes === 0) {
+                    clearInterval(timer);
+                    timerDisplay.textContent = "Time's up!";
+                    return;
+                }
+                minutes--;
+                seconds = 59;
+            } else {
+                seconds--;
+            }
+        }
+    }
+
+    function padNumber(num) {
+        if (num < 10) {
+            return "0" + num;
+        }
+        return num;
+    }
+
+    // To-Do List
+    function addItem() {
+        var input = document.getElementById("todo-item");
+        var task = input.value;
+        if (task.trim() !== "") {
+            var ul = document.getElementById("tasks");
+            var li = document.createElement("li");
+            li.appendChild(document.createTextNode(task));
+            ul.appendChild(li);
+            input.value = '';
+        }
+    }
+</script>
+
+</body>
+</html>
+
